@@ -24,8 +24,11 @@ import io.swagger.v3.oas.annotations.Parameter
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 
+import io.swagger.v3.oas.annotations.tags.Tag
+
+@Tag(name = "Books")
 @RequestMapping("/books")
-interface BookstoreAPI {
+interface BookstoreAPI{
 
     @Operation(summary = "List all books in the catalog")
     @ApiResponses(
@@ -54,8 +57,14 @@ interface BookstoreAPI {
     @Operation(summary = "Get a book by ISBN")
     @ApiResponses(
         value = [
-            ApiResponse(responseCode = "200", description = "Book found"),
-            ApiResponse(responseCode = "404", description = "Book not found")
+            ApiResponse(
+                responseCode = "200",
+                description = "Book found"
+            ),
+            ApiResponse(
+                responseCode = "404",
+                description = "Book not found"
+            )
         ]
     )
     @GetMapping("/{isbn}")
@@ -139,13 +148,6 @@ interface BookstoreAPI {
 
 
     @Operation(summary = "Replace a review")
-    @ApiResponses(
-        value = [
-            ApiResponse(responseCode = "200", description = "Review replaced"),
-            ApiResponse(responseCode = "404", description = "Book or review not found"),
-            ApiResponse(responseCode = "400", description = "Validation error")
-        ]
-    )
     @PutMapping("/{isbn}/reviews/{id}")
     fun replaceReview(
         @PathVariable isbn: String,
@@ -155,13 +157,6 @@ interface BookstoreAPI {
 
 
     @Operation(summary = "Partially update a review")
-    @ApiResponses(
-        value = [
-            ApiResponse(responseCode = "200", description = "Review updated"),
-            ApiResponse(responseCode = "404", description = "Book or review not found"),
-            ApiResponse(responseCode = "400", description = "Validation error")
-        ]
-    )
     @PatchMapping("/{isbn}/reviews/{id}")
     fun patchReview(
         @PathVariable isbn: String,
@@ -182,4 +177,6 @@ interface BookstoreAPI {
         @PathVariable isbn: String,
         @PathVariable id: Long
     ): ResponseEntity<Void>
+
+
 }
