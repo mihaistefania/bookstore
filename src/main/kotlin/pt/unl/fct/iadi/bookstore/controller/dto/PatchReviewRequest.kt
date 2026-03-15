@@ -1,7 +1,7 @@
+package pt.unl.fct.iadi.bookstore.controller.dto
 import io.swagger.v3.oas.annotations.media.Schema
 
 data class PatchReviewRequest(
-
     @field:Schema(
         description = "Rating between 1 and 5",
         minimum = "1",
