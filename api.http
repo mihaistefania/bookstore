@@ -1,0 +1,136 @@
+### US1 — List all books
+GET http://localhost:8080/books
+Accept: application/json
+
+
+### US2 — Create a book
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+  "isbn": "9780134685991",
+  "title": "Effective Java",
+  "author": "Joshua Bloch",
+  "price": 45.0,
+  "image": "https://example.com/book.jpg"
+}
+
+
+### US2 — Create duplicate book (Conflict)
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+  "isbn": "9780134685991",
+  "title": "Duplicate Book",
+  "author": "Someone",
+  "price": 10,
+  "image": "https://example.com/test.jpg"
+}
+
+
+### US3 — Get book by ISBN (English)
+GET http://localhost:8080/books/9780134685991
+Accept-Language: en
+
+
+### US3 — Get book by ISBN (Portuguese)
+GET http://localhost:8080/books/9780134685991
+Accept-Language: pt
+
+
+### US3 — Get non-existing book
+GET http://localhost:8080/books/999999
+
+
+### US4 — Replace book (PUT)
+PUT http://localhost:8080/books/9780134685991
+Content-Type: application/json
+
+{
+  "title": "Effective Java 4th Edition",
+  "author": "Joshua Bloch",
+  "price": 50,
+  "image": "https://example.com/book-new.jpg"
+}
+
+
+### US5 — Patch book
+PATCH http://localhost:8080/books/9780134685991
+Content-Type: application/json
+
+{
+  "price": 55
+}
+
+
+### US6 — Delete book
+DELETE http://localhost:8080/books/9780134685991
+
+
+### US6 — Delete non-existing book
+DELETE http://localhost:8080/books/111111
+
+
+### Create book again (for review tests)
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+  "isbn": "9781491950357",
+  "title": "Designing Data Intensive Applications",
+  "author": "Martin Kleppmann",
+  "price": 60,
+  "image": "https://example.com/ddia.jpg"
+}
+
+
+### US7 — List reviews for a book
+GET http://localhost:8080/books/9781491950357/reviews
+
+
+### US8 — Create review
+POST http://localhost:8080/books/9781491950357/reviews
+Content-Type: application/json
+
+{
+  "rating": 5,
+  "comment": "Excellent book about distributed systems."
+}
+
+
+### US8 — Create review with validation error
+POST http://localhost:8080/books/9781491950357/reviews
+Content-Type: application/json
+
+{
+  "rating": 10,
+  "comment": "Invalid rating"
+}
+
+
+### US9 — Replace review
+PUT http://localhost:8080/books/9781491950357/reviews/1
+Content-Type: application/json
+
+{
+  "rating": 4,
+  "comment": "Updated review comment."
+}
+
+
+### US10 — Patch review
+PATCH http://localhost:8080/books/9781491950357/reviews/1
+Content-Type: application/json
+
+{
+  "rating": 3
+}
+
+
+### US11 — Delete review
+DELETE http://localhost:8080/books/9781491950357/reviews/1
+
+
+### US11 — Delete non-existing review
+DELETE http://localhost:8080/books/9781491950357/reviews/99
