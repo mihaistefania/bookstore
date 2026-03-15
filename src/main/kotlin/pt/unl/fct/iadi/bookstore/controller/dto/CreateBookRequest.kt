@@ -1,6 +1,8 @@
 package pt.unl.fct.iadi.bookstore.controller.dto
 
-import jakarta.validation.constraints.*
+import jakarta.validation.constraints.DecimalMin
+import jakarta.validation.constraints.NotBlank
+import jakarta.validation.constraints.Size
 import org.hibernate.validator.constraints.URL
 
 data class CreateBookRequest(

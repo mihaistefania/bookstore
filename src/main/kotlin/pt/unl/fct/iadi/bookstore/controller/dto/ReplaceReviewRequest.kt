@@ -1,6 +1,8 @@
 package pt.unl.fct.iadi.bookstore.controller.dto
 
-import jakarta.validation.constraints.*
+import jakarta.validation.constraints.Max
+import jakarta.validation.constraints.Min
+import jakarta.validation.constraints.Size
 
 data class ReplaceReviewRequest(
 

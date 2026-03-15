@@ -1,7 +1,8 @@
 package pt.unl.fct.iadi.bookstore.service
 
 import org.springframework.stereotype.Service
-import pt.unl.fct.iadi.bookstore.domain.*
+import pt.unl.fct.iadi.bookstore.domain.Book
+import pt.unl.fct.iadi.bookstore.domain.Review
 
 @Service
 class BookstoreService {

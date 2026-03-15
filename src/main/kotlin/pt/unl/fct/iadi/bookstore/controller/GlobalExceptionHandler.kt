@@ -1,11 +1,19 @@
 package pt.unl.fct.iadi.bookstore.controller
 
 import jakarta.servlet.http.HttpServletRequest
-import org.springframework.http.*
+
+import org.springframework.http.HttpHeaders
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
+
 import org.springframework.web.bind.MethodArgumentNotValidException
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.ExceptionHandler
+import org.springframework.web.bind.annotation.RestControllerAdvice
+
 import pt.unl.fct.iadi.bookstore.controller.dto.ErrorResponse
-import pt.unl.fct.iadi.bookstore.service.*
+import pt.unl.fct.iadi.bookstore.service.BookAlreadyExistsException
+import pt.unl.fct.iadi.bookstore.service.BookNotFoundException
+import pt.unl.fct.iadi.bookstore.service.ReviewNotFoundException
 
 @RestControllerAdvice
 class GlobalExceptionHandler {
