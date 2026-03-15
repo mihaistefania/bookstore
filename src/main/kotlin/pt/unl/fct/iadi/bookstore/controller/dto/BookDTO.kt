@@ -29,7 +29,8 @@ data class BookDTO(
 
     @field:Schema(
         description = "Price of the book (must be greater than 0)",
-        example = "45.0"
+        example = "45.0",
+        minimum = "0.01"
     )
     val price: Double,
 
