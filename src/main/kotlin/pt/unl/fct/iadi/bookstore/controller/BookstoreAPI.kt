@@ -156,6 +156,7 @@ interface BookstoreAPI{
 
 
     @Operation(summary = "Replace a review")
+    @Tag(name = "Reviews")
     @ApiResponses(
         value = [
             ApiResponse(responseCode = "200", description = "Review replaced"),
@@ -172,6 +173,7 @@ interface BookstoreAPI{
 
 
     @Operation(summary = "Partially update a review")
+    @Tag(name = "Reviews")
     @ApiResponses(
         value = [
             ApiResponse(responseCode = "200", description = "Review updated"),
@@ -188,6 +190,7 @@ interface BookstoreAPI{
 
 
     @Operation(summary = "Delete a review")
+    @Tag(name = "Reviews")
     @ApiResponses(
         value = [
             ApiResponse(responseCode = "204", description = "Review deleted"),
