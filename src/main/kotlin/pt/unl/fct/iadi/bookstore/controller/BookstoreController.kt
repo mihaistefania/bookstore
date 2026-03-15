@@ -15,6 +15,12 @@ import pt.unl.fct.iadi.bookstore.domain.Book
 import pt.unl.fct.iadi.bookstore.service.BookstoreService
 import java.net.URI
 
+import org.springframework.web.bind.annotation.PutMapping
+import org.springframework.web.bind.annotation.PatchMapping
+import org.springframework.web.bind.annotation.DeleteMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.RequestBody
+
 @RestController
 class BookstoreController(
     private val service: BookstoreService
@@ -117,6 +123,7 @@ class BookstoreController(
             .body(ReviewDTO(review.id, review.rating, review.comment))
     }
 
+    @PutMapping("/{isbn}/reviews/{id}")
     override fun replaceReview(isbn: String, id: Long, request: ReplaceReviewRequest): ResponseEntity<Void> {
 
         service.replaceReview(
@@ -129,6 +136,7 @@ class BookstoreController(
         return ResponseEntity.ok().build()
     }
 
+    @PatchMapping("/{isbn}/reviews/{id}")
     override fun patchReview(isbn: String, id: Long, request: PatchReviewRequest): ResponseEntity<Void> {
 
         service.patchReview(
@@ -141,6 +149,7 @@ class BookstoreController(
         return ResponseEntity.ok().build()
     }
 
+    @DeleteMapping("/{isbn}/reviews/{id}")
     override fun deleteReview(isbn: String, id: Long): ResponseEntity<Void> {
 
         service.deleteReview(isbn, id)
